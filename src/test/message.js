@@ -93,7 +93,6 @@ describe('Message API endpoints', () => {
                 expect(res.body).to.be.an('object');
                 expect(res.body.title).to.equal('Test');
                 expect(res.body.body).to.equal('Test body');
-                done();
 
                 Message.findOne({ author: user }).then((msg) => {
                     expect(msg).to.be.an('object');
@@ -111,7 +110,6 @@ describe('Message API endpoints', () => {
                 expect(res).to.have.status(200);
                 expect(res.body).to.be.an('object');
                 expect(res.body.title).to.equal('New title');
-                done();
 
                 Message.findOne({ title: 'New title' }).then((msg) => {
                     expect(msg).to.be.an('object');
@@ -126,7 +124,6 @@ describe('Message API endpoints', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.body.message).to.equal('Deleted message');
-                done();
 
                 Message.findOne({ title: 'Test' }).then((msg) => {
                     expect(msg).to.equal(null);
